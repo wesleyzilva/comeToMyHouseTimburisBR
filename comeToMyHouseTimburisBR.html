@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTMH_BR | Your Tropical House in São Carlos, Brazil</title>
+    <meta name="description" content="CTMH_BR: Exclusive house for rent in São Carlos, Brazil. Tropical vibe, near USP and UFSCar.">
+    
+    <style>
+        /* Paleta Tropical */
+        :root {
+            --primary-orange: #F39C12; /* Sol/Tropical */
+            --primary-green: #27AE60; /* Folhagem/Natureza */
+            --text-dark: #2C3E50;
+            --text-light: #7F8C8D;
+            --bg-sand: #FCFBF9; /* Areia clara / Off-white */
+            --border-color: #EAECEE;
+            --alert-red: #C0392B;
+        }
+        
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; color: var(--text-dark); background-color: var(--bg-sand); line-height: 1.6; }
+        
+        /* Navbar */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; background: white; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary-green); display: flex; flex-direction: column; line-height: 1.1; }
+        .logo-sub { font-size: 0.75rem; color: var(--primary-orange); font-weight: bold; }
+        .lang-btn { background: white; border: 2px solid var(--border-color); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.2s; color: var(--text-dark); }
+        .lang-btn:hover { border-color: var(--primary-orange); color: var(--primary-orange); }
+
+        /* Container */
+        .container { max-width: 1120px; margin: 0 auto; padding: 2rem 5%; }
+
+        h1 { font-size: 2.2rem; margin-bottom: 0.5rem; color: var(--text-dark); }
+        .subtitle { color: var(--text-light); font-size: 1rem; margin-bottom: 1.5rem; }
+
+        /* Galeria */
+        .gallery { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 200px 200px; gap: 10px; border-radius: 16px; overflow: hidden; margin-bottom: 3rem; }
+        .gallery div { background-color: #E2E8F0; display: flex; align-items: center; justify-content: center; color: var(--text-light); font-weight: bold; }
+        .gallery div:first-child { grid-row: span 2; background-color: #CBD5E1; }
+
+        /* Layout Principal */
+        .main-content { display: flex; gap: 4rem; flex-wrap: wrap; }
+        .details { flex: 2; min-width: 300px; }
+        .checkout-container { flex: 1; min-width: 320px; }
+
+        h2 { font-size: 1.5rem; border-bottom: 2px solid var(--primary-orange); padding-bottom: 0.5rem; margin-top: 2.5rem; display: inline-block; }
+        
+        /* Amenities */
+        .amenities-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+        .amenity-item { display: flex; align-items: center; gap: 10px; font-weight: 500; }
+
+        /* Regras e Alertas da Casa */
+        .house-rules-card { background: white; border-left: 5px solid var(--alert-red); border-radius: 0 12px 12px 0; padding: 1.5rem; margin-top: 1.5rem; border: 1px solid var(--border-color); border-left-width: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .house-rules-card h4 { margin-top: 0; color: var(--alert-red); display: flex; align-items: center; gap: 8px; }
+        .house-rules-card ul { padding-left: 20px; margin-bottom: 0; font-size: 0.95rem; }
+
+        /* Seção Tropical / Planejamento */
+        .planning-card { background: white; border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; border: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .timeline-item { display: flex; gap: 15px; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px dashed var(--border-color); }
+        .timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .timeline-icon { font-size: 2rem; }
+        .timeline-text h4 { margin: 0 0 5px 0; color: var(--primary-green); }
+        .timeline-text p { margin: 0; font-size: 0.9rem; color: var(--text-light); }
+
+        /* Card de Checkout / Reservas */
+        .checkout-card { background: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 1.8rem; box-shadow: 0 10px 25px rgba(0,0,0,0.08); position: sticky; top: 100px; }
+        .price-rules { background: var(--bg-sand); padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 0.9rem; }
+        .price-rules ul { padding-left: 20px; margin-top: 5px; }
+        .promo-banner { background-color: rgba(39, 174, 96, 0.1); color: var(--primary-green); padding: 10px; border-radius: 8px; font-weight: bold; font-size: 0.9rem; margin-bottom: 1rem; text-align: center; border: 1px dashed var(--primary-green); }
+        
+        .btn-primary { display: block; width: 100%; text-align: center; background: var(--primary-orange); color: white; border: none; padding: 14px; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; text-decoration: none; margin-top: 1rem; transition: background 0.3s; }
+        .btn-primary:hover { background: #E67E22; }
+
+        /* Blog Cards */
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .blog-card { border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; background: white; text-decoration: none; color: inherit; transition: 0.3s; }
+        .blog-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .blog-img { height: 160px; background: #E2E8F0; display: flex; align-items: center; justify-content: center; }
+        .blog-content { padding: 1.5rem; }
+        .blog-tag { background: rgba(243, 156, 18, 0.15); color: #D68910; font-size: 0.75rem; padding: 4px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase; margin-bottom: 0.5rem; display: inline-block; }
+        .blog-title { font-weight: bold; font-size: 1.1rem; margin: 0.5rem 0; color: var(--text-dark); }
+        .blog-desc { font-size: 0.9rem; color: var(--text-light); margin: 0; }
+
+        .pt { display: none; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            CTMH_BR
+            <span class="logo-sub">comeToMyHouseTimburisBR.com</span>
+        </div>
+        <button class="lang-btn" onclick="toggleLanguage()" id="langToggleBtn">🇺🇸 EN | 🇧🇷 PT</button>
+    </nav>
+
+    <div class="container">
+        
+        <h1 class="en">Experience Tropical Brazil in the Tech Capital</h1>
+        <h1 class="pt">Experimente o Brasil Tropical na Capital da Tecnologia</h1>
+        
+        <div class="subtitle">
+            <span class="en">📍 São Carlos, São Paulo, Brazil · Capacity: 2 to 12 guests · Near USP & UFSCar</span>
+            <span class="pt">📍 São Carlos, São Paulo, Brasil · Capacidade: 2 a 12 pessoas · Perto da USP e UFSCar</span>
+        </div>
+
+        <div class="gallery">
+            <div>☀️ Main Photo (Sunny Living Room)</div>
+            <div>🪴 Balcony/Garden</div>
+            <div>💻 Workspace</div>
+            <div>🛏️ Bedroom</div>
+            <div>🍳 Kitchen</div>
+        </div>
+
+        <div class="main-content">
+            
+            <div class="details">
+                <h2 class="en">Welcome to your Brazilian Home</h2>
+                <h2 class="pt">Bem-vindo à sua Casa Brasileira</h2>
+                
+                <p class="en">Welcome to São Carlos! Known as the Technology Capital of Latin America. <strong>CTMH_BR</strong> offers a comfortable stay for 2 to 12 guests. <em>Please note: This is a peaceful place focused on rest and grilling (churrasco), not a party venue.</em></p>
+                <p class="pt">Bem-vindo a São Carlos, a Capital da Tecnologia da América Latina! O <strong>CTMH_BR</strong> acomoda confortavelmente de 2 a 12 pessoas. <em>Atenção: Este é um ambiente voltado para descanso e churrasco em família/grupo, não sendo permitido para festas ou eventos.</em></p>
+
+                <!-- CARD DE REGRAS IMPORTANTES -->
+                <div class="house-rules-card">
+                    <h4 class="en">🛡️ Important House Rules & Safety</h4>
+                    <h4 class="pt">🛡️ Regras Importantes e Segurança</h4>
+                    <ul>
+                        <li><span class="en"><strong>Capacity:</strong> From 2 up to 12 guests.</span><span class="pt"><strong>Capacidade:</strong> De 2 até 12 pessoas.</span></li>
+                        <li><span class="en"><strong>Quiet & Rest:</strong> Not a party house — designed strictly for resting and barbecue.</span><span class="pt"><strong>Descanso:</strong> Não é uma área de festas, mas sim um espaço de descanso e churrasco.</span></li>
+                        <li><span class="en"><strong>Visitors:</strong> Unregistered visitors and overnight visitor stays are strictly prohibited.</span><span class="pt"><strong>Visitas:</strong> Proibido receber visitas e pernoite de pessoas não cadastradas.</span></li>
+                        <li><span class="en"><strong>Security:</strong> Safety security cameras installed at the exterior gates.</span><span class="pt"><strong>Segurança:</strong> O imóvel possui câmeras de segurança externas nos portões.</span></li>
+                    </ul>
+                </div>
+
+                <h2 class="en">What this place offers</h2>
+                <h2 class="pt">O que este lugar oferece</h2>
+                <div class="amenities-grid">
+                    <div class="amenity-item">🌐 <span class="en">High-Speed Wi-Fi</span><span class="pt">Wi-Fi de Alta Velocidade</span></div>
+                    <div class="amenity-item">💻 <span class="en">Remote Workspace</span><span class="pt">Espaço de Trabalho (Home Office)</span></div>
+                    <div class="amenity-item">🥩 <span class="en">Barbecue Area (Churrasqueira)</span><span class="pt">Área de Churrasco</span></div>
+                    <div class="amenity-item">📹 <span class="en">Gate Security Cameras</span><span class="pt">Câmeras de Segurança nos Portões</span></div>
+                </div>
+
+                <!-- CLIMA E CALENDÁRIO -->
+                <h2 class="en">When to visit? (Climate & Academic Calendar)</h2>
+                <h2 class="pt">Quando visitar? (Clima e Calendário Acadêmico)</h2>
+                <div class="planning-card">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">☀️</div>
+                        <div class="timeline-text">
+                            <h4 class="en">Dec - Feb: Tropical Summer & Carnival</h4>
+                            <h4 class="pt">Dez - Fev: Verão Tropical e Carnaval</h4>
+                            <p class="en">Hot weather, summer rains, and Carnival energy. Perfect for digital nomads and tourism.</p>
+                            <p class="pt">Clima quente, chuvas de verão e energia do Carnaval. Perfeito para nômades digitais e turismo.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">📚</div>
+                        <div class="timeline-text">
+                            <h4 class="en">Mar - Jun: 1st Semester & Mild Weather</h4>
+                            <h4 class="pt">Mar - Jun: 1º Semestre e Clima Agradável</h4>
+                            <p class="en">Dry, sunny days with cool nights. Ideal for exchange students arriving for USP/UFSCar.</p>
+                            <p class="pt">Dias secos e ensolarados com noites frescas. Ideal para intercambistas da USP/UFSCar.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🎉</div>
+                        <div class="timeline-text">
+                            <h4 class="en">Oct - Nov: Spring & College Events</h4>
+                            <h4 class="pt">Out - Nov: Primavera e Eventos Universitários</h4>
+                            <p class="en">Warming up! Season for TUSCA and major local academic events. High demand period!</p>
+                            <p class="pt">Esquentando! Época da TUSCA e grandes eventos acadêmicos locais. Período de alta demanda!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="en">Availability & Location</h2>
+                <h2 class="pt">Disponibilidade e Localização</h2>
+                <p class="en">Check our calendar below for free dates. Central area, close to bus routes for both Universities.</p>
+                <p class="pt">Verifique nosso calendário abaixo. Área central, perto de rotas de ônibus para ambas as Universidades.</p>
+                <div style="background:#E2E8F0; height:350px; border-radius:12px; display:flex; align-items:center; justify-content:center; color:#7F8C8D; margin-top: 1rem; border: 1px dashed #BDC3C7;">
+                    [ EMBED DO GOOGLE CALENDAR AQUI ]<br>Mostrando apenas "Livre / Ocupado"
+                </div>
+            </div>
+
+            <!-- CARD DE RESERVAS E REGRAS -->
+            <div class="checkout-container">
+                <div class="checkout-card">
+                    <div class="promo-banner">
+                        <span class="en">🏷️ 10% OFF when paying with Debit/PIX!</span>
+                        <span class="pt">🏷️ 10% de DESCONTO no Débito ou PIX!</span>
+                    </div>
+
+                    <h3 style="margin-top:0; color: var(--primary-green);" class="en">Booking Rules & Rates</h3>
+                    <h3 style="margin-top:0; color: var(--primary-green);" class="pt">Regras e Tarifas</h3>
+
+                    <div class="price-rules">
+                        <strong><span class="en">Dynamic Pricing:</span><span class="pt">Preços Dinâmicos:</span></strong>
+                        <ul>
+                            <li><span class="en">🟢 <strong>Standard:</strong> Regular days.</span><span class="pt">🟢 <strong>Padrão:</strong> Dias normais.</span></li>
+                            <li><span class="en">🟡 <strong>Mid:</strong> Winter break & short holidays.</span><span class="pt">🟡 <strong>Médio:</strong> Férias e feriados curtos.</span></li>
+                            <li><span class="en">🔴 <strong>Peak:</strong> TUSCA, Carnival, Enrollment weeks.</span><span class="pt">🔴 <strong>Alta:</strong> TUSCA, Carnaval, Matrículas.</span></li>
+                        </ul>
+                        <hr style="border: 0; border-top: 1px solid #CCC; margin: 10px 0;">
+                        <span class="en">👥 <strong>Capacity:</strong> 2 to 12 guests</span><span class="pt">👥 <strong>Capacidade:</strong> 2 a 12 pessoas</span><br>
+                        <span class="en">⏳ <strong>Min. stay:</strong> 2 nights</span><span class="pt">⏳ <strong>Estadia mínima:</strong> 2 noites</span><br>
+                        <span class="en">📅 <strong>Advance notice:</strong> 7 days</span><span class="pt">📅 <strong>Antecedência:</strong> 7 dias</span>
+                    </div>
+
+                    <p class="en" style="font-size:0.9rem;"><strong>Payments Accepted:</strong></p>
+                    <p class="pt" style="font-size:0.9rem;"><strong>Pagamentos Aceitos:</strong></p>
+                    <ul style="font-size:0.9rem; padding-left: 20px; margin-top: 5px;">
+                        <li><span class="en"><strong>PayPal</strong> (International Cards)</span><span class="pt"><strong>PayPal</strong> (Cartões Internacionais)</span></li>
+                        <li><span class="en"><strong>Mercado Pago</strong> (South America/BR)</span><span class="pt"><strong>Mercado Pago</strong> (América do Sul/BR)</span></li>
+                    </ul>
+
+                    <div style="border-top: 1px solid var(--border-color); margin: 15px 0; padding-top: 15px;">
+                        <strong class="en" style="color: var(--primary-orange);">🌍 House-Swapping Program</strong>
+                        <strong class="pt" style="color: var(--primary-orange);">🌍 Programa de Permuta</strong>
+                        <p class="en" style="font-size:0.85rem; color:var(--text-light); margin-top:5px;">
+                            We accept direct house-swapping! Highly interested in: <br>
+                            • 🏖️ <strong>Beach locations</strong> (Brazil).<br>
+                            • 🏂 <strong>Snow destinations</strong> (Chile, Argentina).
+                        </p>
+                        <p class="pt" style="font-size:0.85rem; color:var(--text-light); margin-top:5px;">
+                            Aceitamos permuta direta de hospedagem! Interesses: <br>
+                            • 🏖️ <strong>Praias</strong> (Litoral brasileiro).<br>
+                            • 🏂 <strong>Neve</strong> (Chile, Argentina).
+                        </p>
+                    </div>
+
+                    <!-- BOTÃO DO WHATSAPP COM O SEU NÚMERO CORRETO -->
+                    <a href="https://wa.me/5516997212966?text=Hello!%20I%20saw%20CTMH_BR%20and%20want%20to%20know%20more%20about%20availability." target="_blank" class="btn-primary">
+                        <span class="en">Contact Owner on WhatsApp</span>
+                        <span class="pt">Chamar no WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- BLOG / GUIAS -->
+        <h2 class="en">Discover Brazil & Plan Your Trip</h2>
+        <h2 class="pt">Descubra o Brasil e Planeje sua Viagem</h2>
+        <div class="blog-grid">
+            <a href="#" class="blog-card">
+                <div class="blog-img">🛂 Visa Image</div>
+                <div class="blog-content">
+                    <span class="blog-tag en">Visa & Govt</span><span class="blog-tag pt">Visto e Gov</span>
+                    <div class="blog-title en">Digital Nomad Visa in Brazil</div>
+                    <div class="blog-title pt">Visto de Nômade Digital no Brasil</div>
+                    <p class="blog-desc en">How to apply for the Brazilian remote worker visa.</p>
+                    <p class="blog-desc pt">Como solicitar o visto de trabalho remoto brasileiro.</p>
+                </div>
+            </a>
+            <a href="#" class="blog-card">
+                <div class="blog-img">🌿 Waterfall Image</div>
+                <div class="blog-content">
+                    <span class="blog-tag en">Tourism</span><span class="blog-tag pt">Turismo</span>
+                    <div class="blog-title en">Stunning Waterfalls in São Paulo</div>
+                    <div class="blog-title pt">Cachoeiras Incríveis em São Paulo</div>
+                    <p class="blog-desc en">Explore nature just a few hours from São Carlos.</p>
+                    <p class="blog-desc pt">Explore a natureza a poucas horas de São Carlos.</p>
+                </div>
+            </a>
+            <a href="#" class="blog-card">
+                <div class="blog-img">🎓 Campus Image</div>
+                <div class="blog-content">
+                    <span class="blog-tag en">Education</span><span class="blog-tag pt">Educação</span>
+                    <div class="blog-title en">Exchange Programs at USP & UFSCar</div>
+                    <div class="blog-title pt">Intercâmbio na USP e UFSCar</div>
+                    <p class="blog-desc en">Everything about short-term study & tech research.</p>
+                    <p class="blog-desc pt">Tudo sobre programas curtos e pesquisa em tecnologia.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 3rem 1rem; border-top: 1px solid var(--border-color); margin-top: 3rem; color: var(--text-light); font-size: 0.9rem;">
+        <p>© 2026 CTMH_BR - comeToMyHouseTimburisBR.com. All rights reserved.</p>
+        <p>São Carlos, SP - Brazil</p>
+    </footer>
+
+    <script>
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            const elementsEN = document.querySelectorAll('.en');
+            const elementsPT = document.querySelectorAll('.pt');
+            const btn = document.getElementById('langToggleBtn');
+
+            if (currentLang === 'en') {
+                elementsEN.forEach(el => el.style.display = 'none');
+                elementsPT.forEach(el => {
+                    if(el.tagName === 'SPAN' || el.tagName === 'STRONG') el.style.display = 'inline';
+                    else el.style.display = 'block';
+                });
+                btn.innerHTML = "🇧🇷 PT | 🇺🇸 EN";
+                document.documentElement.lang = 'pt-BR';
+                currentLang = 'pt';
+            } else {
+                elementsPT.forEach(el => el.style.display = 'none');
+                elementsEN.forEach(el => {
+                    if(el.tagName === 'SPAN' || el.tagName === 'STRONG') el.style.display = 'inline';
+                    else el.style.display = 'block';
+                });
+                btn.innerHTML = "🇺🇸 EN | 🇧🇷 PT";
+                document.documentElement.lang = 'en';
+                currentLang = 'en';
+            }
+        }
+    </script>
+</body>
+</html>

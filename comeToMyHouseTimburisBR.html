@@ -3,58 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CTMH_BR | Your Tropical House in São Carlos, Brazil</title>
-    <meta name="description" content="CTMH_BR: Exclusive house for rent in São Carlos, Brazil. Tropical vibe, near USP and UFSCar.">
+    <title>CTMH_BR | comeToMyHouseTimburisBR.com - São Carlos, Brazil</title>
+    <meta name="description" content="CTMH_BR: Exclusive house for rent in São Carlos, Brazil. Tropical vibe, capacity 2 to 12 guests, near USP and UFSCar.">
     
     <style>
-        /* Paleta Tropical */
         :root {
-            --primary-orange: #F39C12; /* Sol/Tropical */
-            --primary-green: #27AE60; /* Folhagem/Natureza */
+            --primary-orange: #F39C12;
+            --primary-green: #27AE60;
             --text-dark: #2C3E50;
             --text-light: #7F8C8D;
-            --bg-sand: #FCFBF9; /* Areia clara / Off-white */
+            --bg-sand: #FCFBF9;
             --border-color: #EAECEE;
             --alert-red: #C0392B;
         }
         
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; color: var(--text-dark); background-color: var(--bg-sand); line-height: 1.6; }
         
-        /* Navbar */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; background: white; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         .logo { font-size: 1.5rem; font-weight: 800; color: var(--primary-green); display: flex; flex-direction: column; line-height: 1.1; }
         .logo-sub { font-size: 0.75rem; color: var(--primary-orange); font-weight: bold; }
         .lang-btn { background: white; border: 2px solid var(--border-color); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: 0.2s; color: var(--text-dark); }
         .lang-btn:hover { border-color: var(--primary-orange); color: var(--primary-orange); }
 
-        /* Container */
         .container { max-width: 1120px; margin: 0 auto; padding: 2rem 5%; }
 
         h1 { font-size: 2.2rem; margin-bottom: 0.5rem; color: var(--text-dark); }
         .subtitle { color: var(--text-light); font-size: 1rem; margin-bottom: 1.5rem; }
 
-        /* Galeria */
         .gallery { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 200px 200px; gap: 10px; border-radius: 16px; overflow: hidden; margin-bottom: 3rem; }
         .gallery div { background-color: #E2E8F0; display: flex; align-items: center; justify-content: center; color: var(--text-light); font-weight: bold; }
         .gallery div:first-child { grid-row: span 2; background-color: #CBD5E1; }
 
-        /* Layout Principal */
         .main-content { display: flex; gap: 4rem; flex-wrap: wrap; }
         .details { flex: 2; min-width: 300px; }
         .checkout-container { flex: 1; min-width: 320px; }
 
         h2 { font-size: 1.5rem; border-bottom: 2px solid var(--primary-orange); padding-bottom: 0.5rem; margin-top: 2.5rem; display: inline-block; }
         
-        /* Amenities */
         .amenities-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
         .amenity-item { display: flex; align-items: center; gap: 10px; font-weight: 500; }
 
-        /* Regras e Alertas da Casa */
         .house-rules-card { background: white; border-left: 5px solid var(--alert-red); border-radius: 0 12px 12px 0; padding: 1.5rem; margin-top: 1.5rem; border: 1px solid var(--border-color); border-left-width: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
         .house-rules-card h4 { margin-top: 0; color: var(--alert-red); display: flex; align-items: center; gap: 8px; }
         .house-rules-card ul { padding-left: 20px; margin-bottom: 0; font-size: 0.95rem; }
 
-        /* Seção Tropical / Planejamento */
         .planning-card { background: white; border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; border: 1px solid var(--border-color); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
         .timeline-item { display: flex; gap: 15px; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px dashed var(--border-color); }
         .timeline-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
@@ -62,7 +54,6 @@
         .timeline-text h4 { margin: 0 0 5px 0; color: var(--primary-green); }
         .timeline-text p { margin: 0; font-size: 0.9rem; color: var(--text-light); }
 
-        /* Card de Checkout / Reservas */
         .checkout-card { background: white; border: 1px solid var(--border-color); border-radius: 16px; padding: 1.8rem; box-shadow: 0 10px 25px rgba(0,0,0,0.08); position: sticky; top: 100px; }
         .price-rules { background: var(--bg-sand); padding: 15px; border-radius: 8px; margin-bottom: 15px; font-size: 0.9rem; }
         .price-rules ul { padding-left: 20px; margin-top: 5px; }
@@ -71,7 +62,6 @@
         .btn-primary { display: block; width: 100%; text-align: center; background: var(--primary-orange); color: white; border: none; padding: 14px; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; text-decoration: none; margin-top: 1rem; transition: background 0.3s; }
         .btn-primary:hover { background: #E67E22; }
 
-        /* Blog Cards */
         .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
         .blog-card { border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; background: white; text-decoration: none; color: inherit; transition: 0.3s; }
         .blog-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
@@ -121,7 +111,6 @@
                 <p class="en">Welcome to São Carlos! Known as the Technology Capital of Latin America. <strong>CTMH_BR</strong> offers a comfortable stay for 2 to 12 guests. <em>Please note: This is a peaceful place focused on rest and grilling (churrasco), not a party venue.</em></p>
                 <p class="pt">Bem-vindo a São Carlos, a Capital da Tecnologia da América Latina! O <strong>CTMH_BR</strong> acomoda confortavelmente de 2 a 12 pessoas. <em>Atenção: Este é um ambiente voltado para descanso e churrasco em família/grupo, não sendo permitido para festas ou eventos.</em></p>
 
-                <!-- CARD DE REGRAS IMPORTANTES -->
                 <div class="house-rules-card">
                     <h4 class="en">🛡️ Important House Rules & Safety</h4>
                     <h4 class="pt">🛡️ Regras Importantes e Segurança</h4>
@@ -142,7 +131,6 @@
                     <div class="amenity-item">📹 <span class="en">Gate Security Cameras</span><span class="pt">Câmeras de Segurança nos Portões</span></div>
                 </div>
 
-                <!-- CLIMA E CALENDÁRIO -->
                 <h2 class="en">When to visit? (Climate & Academic Calendar)</h2>
                 <h2 class="pt">Quando visitar? (Clima e Calendário Acadêmico)</h2>
                 <div class="planning-card">
@@ -184,7 +172,6 @@
                 </div>
             </div>
 
-            <!-- CARD DE RESERVAS E REGRAS -->
             <div class="checkout-container">
                 <div class="checkout-card">
                     <div class="promo-banner">
@@ -230,7 +217,6 @@
                         </p>
                     </div>
 
-                    <!-- BOTÃO DO WHATSAPP COM O SEU NÚMERO CORRETO -->
                     <a href="https://wa.me/5516997212966?text=Hello!%20I%20saw%20CTMH_BR%20and%20want%20to%20know%20more%20about%20availability." target="_blank" class="btn-primary">
                         <span class="en">Contact Owner on WhatsApp</span>
                         <span class="pt">Chamar no WhatsApp</span>
@@ -240,7 +226,6 @@
 
         </div>
 
-        <!-- BLOG / GUIAS -->
         <h2 class="en">Discover Brazil & Plan Your Trip</h2>
         <h2 class="pt">Descubra o Brasil e Planeje sua Viagem</h2>
         <div class="blog-grid">
